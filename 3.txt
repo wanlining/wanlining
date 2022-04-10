@@ -1,0 +1,49 @@
+//学习结构体
+//声明结构体
+struct stu
+{
+char name[20];
+short age;
+char tele[10]
+char sex[5]
+};
+
+struct t
+{
+char ch[10];
+struct stu s;
+char* pc;
+}
+int main()
+{
+struct stu s={"张三", 12, "12212123", "男"};//初始化
+struct t t1 = {"jj",{"张三", 12, "12212123", "男"}, NULL};
+printf("%d\n", t.s.age);
+printf("%s\n", t.s.name);
+return 0;
+}
+
+
+//另一种写法
+typedef struct stu
+{
+char name[20];
+short age;
+char tele[10]
+char sex[5]
+}stu;  //stu 替代了struct stu
+int main()
+{
+stu s;
+return 0;
+}
+
+
+//另一种写法
+struct stu
+{
+char name[20];
+short age;
+char tele[10]
+char sex[5]
+}s1, s2, s3;  //s1,s2,s3是我们创建的全局变量
