@@ -1,0 +1,13 @@
+int main()
+{
+int n = 9;
+float* p = (float*)&n;
+printf("%d", n);// 9 
+printf("%f",*p);// 0.0000
+
+*p = 9.0;
+printf("%d",n);//  1091567616
+printf("%f", *p);// 9.0000
+
+return 0;
+}
