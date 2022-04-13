@@ -1,0 +1,21 @@
+//函数指针
+int add(int x,int y)
+{
+int z =0;
+z= x+y;
+printf("%d\n",z);
+}
+void print( char * str)
+{
+printf("%s\n",str)//%s字符串类型
+}
+int main()
+{
+int a =2;
+int b =3;
+int (*pa)(int , int) = add;
+(*pa)(a,b);
+void (*p)(char*) = print;
+(*p)("hello world");
+return 0;
+}
