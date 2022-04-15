@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//判断字节序
+//调用函数判断
+int check()
+{
+    int a=1;
+    char *p =(char*)&a;
+    if(*p == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int main()
+{
+    int ret = check();
+    if(ret == 1)
+    {
+        printf("小端\n");
+    }
+    else
+    {
+        printf("大端\n");
+    }
+    return 0;
+}
