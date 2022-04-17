@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+//左旋k个字符
+//方法一
+void left_move(char arr[], int k)
+{
+    int i =0;
+    int len = strlen(arr);
+    for(i=0; i<k; i++)
+    {
+        //
+        int tmp = arr[0];
+        int j = 0;
+        for(j=0;j<len-1;j++)
+        {
+            arr[j]=arr[j+1];
+        }
+        //
+        arr[len-1]=tmp;
+    }
+}
+
+//方法二
+//逆序求解
+//将左边字符串和右边字符串分别逆序，最后在整体逆序
+void rem(char* left, char* right)
+{
+    assert(left!=NULL);
+    assert(right!=NULL);
+
+    while(left<right)
+    {
+        char tmp = *left;
+        *left=*right;
+        *right = tmp;
+        left++;
+        right--;
+    }
+}
+void left_move(char* arr,int k)
+{
+    int len = strlen(arr);
+    rem(arr,arr+k-1);
+    rem(arr+k,arr+len-1);
+    rem(arr,arr+len-1);
+}
+
+
+int main()
+{
+    char arr[]="abcdef";
+    left_move(arr,2);
+    printf("%s\n",arr);
+    return 0;
+}
