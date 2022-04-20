@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+//模拟strcat
+char* my_strcat(char* dest, const char* src)
+{
+    char* ret = dest;
+    assert(dest!= NULL && src);
+    while(*dest != '\0')
+    {
+        dest++;
+    }
+    while(*dest++ = *src++)
+    {
+        ;
+    }
+    return ret;
+}
+int main()
+{
+    char arr1[30]="hello";
+    char arr2[]= "world";
+    my_strcat(arr1,arr2);
+    printf("%s\n",arr1);
+}
