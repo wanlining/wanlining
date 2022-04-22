@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+//模拟memcpy
+my_memcpy(void* dest, const void* src, size_t num)
+{
+    assert(dest != NULL);
+    assert(src != NULL);
+    char* ret = dest;
+    while(num--)
+    {
+        *(char*)dest = *(char*)src;
+        (char*)dest++;
+        (char*)src++;
+    }
+    return ret;
+}
+int main()
+{
+   int arr1[] = {1,2,3,4,5};
+   int arr2[10]={0};
+   int i = 0;
+   my_memcpy(arr2,arr1,sizeof(arr1));
+   for(i=0;i<10;i++)
+   {
+       printf("%d ",arr2[i]);
+   }
+   return 0;
+}
