@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+//联合体
+union un
+{
+    int a;
+    char c;
+};
+int main()
+{
+    union un u;
+    printf("%d\n",sizeof(u));
+    printf("%p\n",&u);
+    printf("%p\n",&u.a);
+    printf("%p\n",&u.c);
+    return 0;
+}
