@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+//动态内存错误案例1
+void GetMemor(char *p)
+{
+    p = (char*)malloc(100);
+}
+void Test(void)
+{
+    char *str = NULL;
+    GetMemor(str);
+    strcpy(str, "hello world");
+    printf(str);
+}
+int main()
+{
+    Test();
+    return 0;
+}
+
+//内存泄露，程序崩溃
+//因为GetMemor并不能传递动态内存，Test函数中的
+//str一直都是NULL。strcpy将使程序崩溃
+
+
+//动态内存错误案例2
+char *GetMemor(void)
+{
+    char p[]="hello world";
+    return p;
+}
+void Test(void)
+{
+    char *str = NULL;
+    str = GetMemor();
+    printf(str);
+}
+int main()
+{
+    Test();
+    return 0;
+}
+
+//非法访问内存-输出乱码
+//因为GetMemor返回的是指向栈内存的指针，该指针的地址
+//不是ＮＵＬＬ，但其原先的内容已经被清除，新内容不可知
+
+
+//动态内存错误案例3
+void GetMemor(char **p,int num)
+{
+    *p = (char *)malloc(num);
+}
+void Test(void)
+{
+    char *str = NULL;
+    GetMemor(&str,100);
+    strcpy(str,"hello");
+    printf(str);
+}
+int main()
+{
+    Test();
+    return 0;
+}
+
+//内存泄露
+//打印hello
+//
+
+
+//动态内存错误案例4
+void Test(void)
+{
+    char *str = (char*)malloc(100);
+    strcpy(str,"hello");
+    free(str);
+    if(str!= NULL)
+    {
+        strcpy(str,"world");
+        printf(str);
+    }
+}
+int main()
+{
+    Test();
+    return 0;
+}
+
+//篡改动态内存区的内容，后果难以想象，非常危险
+//因为free(str);之后，str成为野指针
+//if(str != NULL)语句不起作用
+
