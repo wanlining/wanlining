@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+//联合体判断字节序
+
+int check()
+{
+    union un
+    {
+        int a;
+        char c;
+    };
+    union un u;
+    u.a = 1;
+    return u.c;
+}
+int main()
+{
+    int ret = check();
+    if(ret==1)
+        printf("小端");
+    else
+        printf("大端");
+
+}
