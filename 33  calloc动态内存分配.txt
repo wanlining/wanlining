@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+//动态分配内存
+int main()
+{
+    //向内存申请10个整形的空间
+    int *p = (int*)calloc(10,sizeof(int));
+    if(p==NULL)
+    {
+        //打印错误的原因
+        printf("%s\n",strerror(errno));
+    }
+    else
+    {
+        int i;
+        for(i=0;i<10;i++)
+        {
+            printf("%d ",*(p+i));
+        }
+    }
+    //将申请的内存返还系统
+    free(p);
+    //使p不再可以寻找到原空间
+    p=NULL;
+    return 0;
+}
