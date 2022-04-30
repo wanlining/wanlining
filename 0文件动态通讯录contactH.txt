@@ -1,0 +1,65 @@
+#ifndef CONTACT_H_INCLUDED
+#define CONTACT_H_INCLUDED
+
+#define default_sz 3
+#define max_name 20
+#define max_sex 2
+#define max_tele 20
+#define max_addr 30
+
+//#define MAX 1000
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+typedef struct people
+{
+    char name[max_name];
+    int age;
+    char sex[max_sex];
+    char tele[max_tele];
+    char addr[max_addr];
+}people;
+
+//通讯录类型
+typedef struct Contact
+{
+    struct people *data;//存放1000个信息
+    int size;//记录当前已经有的元素个数
+    int capacity;//通讯录当前最大容量
+}Contact;
+
+enum opin
+{
+    EXIT,
+    ADD,
+    DEL,
+    SEARCH,
+    MODIFY,
+    SHOW,
+    SORT,
+    SAVE
+
+};
+//声明函数
+//初始化
+void Initcontact(struct Contact *ps);
+//添加数据
+void addcontact(struct Contact *ps);
+//查找数据
+void showcontact(struct Contact *ps);
+//删除数据
+void delcontact(struct Contact *ps);
+//查找数据
+void searchcontact(struct Contact *ps);
+//修改数据
+void modifycontact(struct Contact *ps);
+//排序数据
+void sortcontact(struct Contact *ps,int size);
+//释放内存
+void destorycontact(Contact*ps);
+//保存文件
+void savecontact(Contact*ps);
+//加载文件
+void loadcontact(Contact*ps);
+#endif // CONTACT_H_INCLUDED
