@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+//定义一个宏判断偏移量
+#define OFFSETOF(struct_name, member_name)  (int)&(((struct_name*)0)->member_name)
+struct S
+{
+    char a;
+    int b;
+    char c;
+};
+int main()
+{
+   printf("%d\n", OFFSETOF(struct S, a));
+   printf("%d\n", OFFSETOF(struct S, b));
+   printf("%d\n", OFFSETOF(struct S, c));
+
+   return 0;
+}
